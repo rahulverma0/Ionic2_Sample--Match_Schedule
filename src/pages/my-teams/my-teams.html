@@ -1,0 +1,67 @@
+<!--
+  Generated template for the MyTeams page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Elite Schedule</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="secondary">
+    <ion-title>MyTeams</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content >
+  <ion-card  *ngIf="!favourites"> 
+    <ion-card-header class="my-teams-header">No Followed Team</ion-card-header>
+    <ion-card-content>
+         <p>You are currently not following any teams</p>
+        <p>First select a Tournament, then you can follow teams from their teams page</p>
+
+        <button ion-button full round small (click)="goToTournaments()">
+          Find a Tournament
+        </button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="favourites">
+      <ion-list>
+      <ion-list-header class="my-teams-header">Followed Teams</ion-list-header>
+      <button ion-item *ngFor = "let item of favourites" (click)="favoriteTapped($event,item)">
+        <ion-icon name="star"></ion-icon>
+        {{item.team.name}}
+        <p>{{item.tournamentName}}</p>
+      </button>
+      </ion-list>
+    <ion-card-content>
+        <p>To follow more teams, select a Tournament,
+          then you can follow teams from their home page.
+        </p>
+        <button ion-button full round small (click)="goToTournaments()">
+          Find a Tournament
+          </button>
+    </ion-card-content>
+  </ion-card>
+ 
+  
+  <!--<ion-list>
+    <ion-list-header>Followed Teams</ion-list-header>
+    <button ion-item *ngFor = "let item of favourites" (click)="favoriteTapped($event,item)">
+      <ion-icon name="star"></ion-icon>
+      {{item.team.name}}
+      <p>{{item.tournamentName}}</p>
+    </button>
+  </ion-list>
+  <p>To follow more teams, select a Tournament,
+    then you can follow teams from their home page.
+  </p>
+  <button ion-button full round small (click)="goToTournaments()">
+    Find a Tournament
+    </button>-->
+</ion-content>
